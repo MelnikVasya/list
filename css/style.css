@@ -8,6 +8,7 @@ html, body {
 
 .top-line {
   border-top: 6px solid #333;
+  min-width: 700px;
 }
 
 .top-line-buffer {
@@ -16,7 +17,7 @@ html, body {
 
 .container {
   width: 700px;
-  margin: -6px auto -86px;
+  margin: -6px auto -92px;
   min-height: 100%;
 }
 
@@ -79,8 +80,6 @@ html, body {
 .task-list {
   border-radius: 0 0 15px 15px;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
-  width: 698px;
-  margin: 0 auto;
 }
 
 .task {
@@ -95,9 +94,13 @@ html, body {
   background: #FCFED5;
 }
 
+.hover {
+  background: #FCFED5;
+}
+
 .task p {
   display: inline-block;
-  padding: 18px 23px;
+  padding: 16px 23px 17px;
   background: url("../img/left-border-task.png") top left repeat-y;
   border-right: 1px solid #E7EBEA;
   width: 494px;
@@ -163,7 +166,12 @@ input[type="checkbox"]:checked + label::before {
   border: 1px solid #447557;
   border-radius: 0 5px 5px 0;
   outline: none;
-
+}
+.edit-task {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  margin-top: -6px;
 }
 
 .add-todo-list {
@@ -193,6 +201,7 @@ input[type="checkbox"]:checked + label::before {
   border-bottom: 6px solid #333;
   height: 43px;
   padding-top: 43px;
+  min-width: 700px;
 }
 
 .sprite {
@@ -236,23 +245,23 @@ input[type="checkbox"]:checked + label::before {
 }
 
 ._r1_c6 {
-  width: 12px;
+  width: 33px;
   height: 13px;
-  background-position: -10px -187px;
+  background-position: 0 -187px;
 }
 
 ._r1_c7 {
-  width: 12px;
+  width: 33px;
   height: 13px;
-  background-position: -10px -210px;
+  background-position: 0 -210px;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
 }
 
 ._r1_c8 {
-  width: 12px;
+  width: 33px;
   height: 13px;
-  background-position: -10px -164px;
+  background-position: 0 -164px;
 }
-.unseleced-checkbox { width:14px; height:15px; background-position:-10px -233px; }
-.seleced-checkbox { width:14px; height:15px; background-position:-10px -258px; }
 
 
