@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple todo lists</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="top-line"></div>
+  <div class="container" >
+  <div class="top-line-buffer"></div>
+  <h1 class="logo">Simple todo lists</h1>
+  <p class="descriptor">From Ruby Garage</p>
+  <div class="todolist">
+    <div class="todolist-header">
+      <div class="sprite _r1_c1 vertical-alignment"></div>
+      <h1 class="vertical-alignment">Complete the test task for Ruby Garage</h1>
+      <div class="editing-list vertical-alignment ">
+        <a href="#" class="sprite _r1_c5"></a>
+        <div class="line"></div>
+        <a href="#" class="sprite _r1_c4"></a>
+      </div>
+    </div>
+    <form action="#" method="post" class="add-task">
+      <div class="sprite _r1_c3"></div>
+      <input type="text" placeholder="Start typing here to create a task..."><input type="submit" value="Add Task">
+    </form>
+    <ul class="task-list">
+      <li class="task">
+        <input type="checkbox" id="c1" name="cc"><label for="c1"></label>
+        <p>Open this mock-up in Adobe Fireworks</p>
+      </li>
+      <li class="task hover">
+        <input type="checkbox" id="c2" name="cc"><label for="c2"></label>
+        <p>Attentively check the file</p>
+        <div class="edit-task">
+          <a href="#" class="sprite _r1_c6"></a><a href="#" class="sprite _r1_c7"></a><a href="#" class="sprite _r1_c8"></a>
+        </div>
+      </li>
+      <li class="task">
+        <input type="checkbox" id="c3" name="cc"><label for="c3"></label>
+        <p>Write HTML & CSS</p>
+      </li>
+      <li class="task">
+        <input type="checkbox" id="c4" name="cc"><label for="c4"></label>
+        <p>Add Javascript to implement adding / editing / removing for todo items and lists
+          taking into account as more use cases as possible</p>
+      </li>
+    </ul>
+  </div>
+  <div class="todolist">
+    <div class="todolist-header">
+      <div class="sprite _r1_c1 vertical-alignment"></div>
+      <h1 class="vertical-alignment">For Home</h1>
+    </div>
+    <form action="#" method="post" class="add-task">
+      <div class="sprite _r1_c3"></div>
+      <input type="text" placeholder="Start typing here to create a task..."><input type="submit" value="Add Task">
+    </form>
+    <ul class="task-list">
+      <li class="task">
+        <input type="checkbox" id="c1" name="cc"><label for="c1"></label>
+        <p>Buy a milk</p>
+      </li>
+      <li class="task">
+        <input type="checkbox" id="c2" name="cc"><label for="c2"></label>
+        <p>Call Mam</p>
+      </li>
+      <li class="task">
+        <input type="checkbox" id="c3" name="cc"><label for="c3"></label>
+        <p>Clean the room</p>
+      </li>
+      <li class="task">
+        <input type="checkbox" id="c4" name="cc"><label for="c4"></label>
+        <p>Repair the DVD Player</p>
+      </li>
+    </ul>
+  </div>
+  <a class="add-todo-list" href="#"><div class="sprite _r1_c2"></div>Add TODO List</a>
+  <div class="copyright-buffer"></div>
+</div>
+<div class="copyright">&#64; Ruby Garage</div>
+</body>
+</html>
