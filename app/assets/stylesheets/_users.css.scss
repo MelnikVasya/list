@@ -1,25 +1,13 @@
-html, body {
-  height: 100%;
-  background: #cc8810;
-  background: linear-gradient(to bottom, #d9d4c2 0%,#d9d4c2 25%,#cc8810 75%,#cc8810) no-repeat center center fixed;
-  background-size: cover;
-  font-family: Arial, sans-serif;
-}
+// Welcome
 
-.top-line {
-  border-top: 6px solid #333;
-  min-width: 700px;
+// New
+.sign {
+  width: 535px;
+  margin: 0 auto;
 }
+// Edit
 
-.top-line-buffer {
-  height: 63px;
-}
-
-.container {
-  width: 700px;
-  margin: -6px auto -92px;
-  min-height: 100%;
-}
+// show
 
 .logo {
   padding: 0;
@@ -29,7 +17,7 @@ html, body {
   text-align: center;
   text-shadow: 0 1px 0 #fff;
   text-transform: uppercase;
- }
+}
 
 .descriptor {
   margin-bottom: 58px;
@@ -44,7 +32,7 @@ html, body {
   position: relative;
   margin-top: 40px;
   height: 52px;
-  background: url("../img/header-background.jpg") repeat-x;
+  background: image_url('header-background.jpg') repeat-x;
   border-left: 1px solid #315589;
   border-right: 1px solid #315589;
   border-bottom: 1px solid #315589;
@@ -77,12 +65,13 @@ html, body {
   margin: 0 5px;
 }
 
-.task-list {
+ul.task-list {
   border-radius: 0 0 15px 15px;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+  list-style-type: none;
 }
 
-.task {
+li.task {
   background: #fff;
   border-bottom: 1px solid #E7EBEA;
   color: #999;
@@ -94,6 +83,10 @@ html, body {
   background: #FCFED5;
 }
 
+li.task p {
+  margin-bottom: 0;
+}
+
 .hover {
   background: #FCFED5;
 }
@@ -101,7 +94,7 @@ html, body {
 .task p {
   display: inline-block;
   padding: 16px 23px 17px;
-  background: url("../img/left-border-task.png") top left repeat-y;
+  background: image_url('left-border-task.png') top left repeat-y;
   border-right: 1px solid #E7EBEA;
   width: 494px;
   text-align: justify;
@@ -118,14 +111,16 @@ input[type="checkbox"] + label::before {
   width:16px;
   height:18px;
   margin: -9px 13px 0 13px;
-  background: url("../img/sprite.png") -10px -261px no-repeat;
+  background: image_url('sprite.png') -10px -261px no-repeat;
   content:"";
 }
 
 input[type="checkbox"]:checked + label::before {
-  background: url("../img/sprite.png") -10px -233px no-repeat;
+  background: image_url('sprite.png') -10px -233px no-repeat;
 }
-
+ul.task-list {
+  padding-left: 0;
+}
 .task-list > .task:last-child {
   border-bottom: none;
   border-radius: 0 0 15px 15px;
@@ -170,15 +165,15 @@ input[type="checkbox"]:checked + label::before {
 .edit-task {
   position: absolute;
   top: 50%;
-  right: 13px;
+  right: 35px;
   margin-top: -6px;
 }
 
-.add-todo-list {
+a.add-todo-list {
   margin: 49px auto 0;
   display: block;
   width: 209px;
-  background: url("../img/header-background.jpg") repeat-x;
+  background: image_url('header-background.jpg') repeat-x;
   border: 1px solid #315589;
   border-top: 0;
   border-radius: 2px 2px 2px 2px;
@@ -189,23 +184,17 @@ input[type="checkbox"]:checked + label::before {
   text-shadow: 0 1px 0 #28405D;
 }
 
-.copyright-buffer {
-  height: 86px;
-}
-
 .copyright {
-  display: block;
   font-size: 14px;
   color: #fff;
   text-align: center;
   border-bottom: 6px solid #333;
   height: 43px;
-  padding-top: 43px;
   min-width: 700px;
 }
 
 .sprite {
-  background: url("../img/sprite.png") top left no-repeat;
+  background: image_url('sprite.png') top left no-repeat;
   display: inline-block;
 }
 
@@ -263,5 +252,8 @@ input[type="checkbox"]:checked + label::before {
   height: 13px;
   background-position: 0 -164px;
 }
+
+
+
 
 

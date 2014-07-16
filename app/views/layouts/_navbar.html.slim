@@ -1,0 +1,27 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    = link_to root_path, class: 'navbar-text'
+      span.glyphicon.glyphicon-ok
+    - if signed_in?
+      ul.nav.navbar-nav.navbar-right
+        li = link_to "#{current_user.name}", edit_user_path(current_user)
+        li = link_to signout_path, method: 'delete'
+          span.glyphicon.glyphicon-off
+    -else
+      - unless @nav_sign_in
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              | Sign in
+              span.caret
+            ul.dropdown-menu.dropdown-menu-right role="menu"
+              = form_for(:session, url: sessions_path, html: {class: 'sign_in' }) do |f|
+                li
+                  .form-group
+                    = f.text_field :email, class: 'form-control input-sm', placeholder: 'email'
+                li
+                  .form-group
+                    = f.password_field :password, class: 'form-control input-sm', placeholder: 'password'
+                li
+                  = f.submit 'Sign in', class: 'btn btn-default btn-sm btn-sign-in'
+                  = link_to 'Create account', new_user_path, class: 'small create-account'

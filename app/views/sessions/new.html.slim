@@ -1,0 +1,10 @@
+h1.logo Sign in to Todo Lists
+= form_for(:session, url: sessions_path, html: {class: 'sign_in sign' }) do |f|
+  .form-group
+    label Your email
+    = f.text_field :email, class: 'form-control', placeholder: 'Email'
+  .form-group
+    label Your password
+    = f.password_field :password, class: 'form-control', placeholder: 'Password'
+  = f.submit 'Sign in', class: 'btn btn-primary btn-sign-in'
+  = link_to 'Create account', signup_path, class: 'create-account'

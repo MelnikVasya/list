@@ -1,0 +1,25 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrapValidator.min";
+html, body {
+  background: #cc8810;
+  background: linear-gradient(to bottom, #d9d4c2 0%,#d9d4c2 25%,#cc8810 75%,#cc8810) no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 66px;
+}
+.container-app {
+  width: 700px;
+  margin: 50px auto 0;
+}
+@import "navbar";
+@import "users";
+@import "footer";
+
+

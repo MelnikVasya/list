@@ -1,0 +1,28 @@
+.navbar {
+  min-height: 40px;
+  height: 40px;
+}
+a.navbar-text {
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 3px;
+}
+a.navbar-text:hover {
+  color: #fff;
+}
+
+
+.dropdown-menu {
+  padding: 15px 10px;
+  width: 240px;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.create-account {
+  margin-left: 10px;
+}
