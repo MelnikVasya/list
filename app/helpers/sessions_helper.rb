@@ -31,4 +31,7 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.url if request.get?
   end
+  def logged_in_user
+    redirect_to current_user if signed_in?
+  end
 end

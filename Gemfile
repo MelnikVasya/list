@@ -13,6 +13,9 @@ gem 'slim-rails', '2.1.5'
 gem 'bootstrap-sass', '3.2.0.0'
 gem 'autoprefixer-rails'
 gem 'jquery-turbolinks'
+gem 'acts_as_list'
+gem 'jquery-ui-rails'
+gem 'best_in_place', github: "bernat/best_in_place"
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'

@@ -1,0 +1,21 @@
+= content_tag(:div, class: 'todolist', id: list.id )
+  .todolist-header
+    = image_tag('note.png', height: '24', width: '24', class: 'note-image')
+    = best_in_place list, :header, type: :input, class: "list-header", inner_class: "inner-list-header" , activator: "#edit_list_#{list.id}"
+    .editing-list
+      = link_to '#', :data => {toggle: "modal", target: "#NewProjectModal"}
+        = image_tag('plus_blue.png', height: '16', width: '16')
+      .line
+      = link_to "#", id: "edit_list_#{list.id}"
+        = image_tag('edit_list.png', height: '16', width: '16')
+      .line
+      = link_to list, method: :delete, remote: true
+        = image_tag('delete_list.png', height: '16', width: '16')
+  = form_for(:task, url: tasks_path, remote: true, html: {class: 'add-task' }) do |f|
+    = image_tag('plus_green.png', height: '24', width: '24', class: 'plus-green')
+    = f.text_field :content, placeholder: 'Start typing here to create a task...', class: "field-add-task-#{list.id}"
+    = f.hidden_field :task_list_id, value: list.id
+    = f.submit 'Add Task'
+  = content_tag(:ul, class: 'task-list', id: list.id)
+    - list.tasks.each do |task|
+      = render 'task', task: task

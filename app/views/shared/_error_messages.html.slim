@@ -2,6 +2,5 @@
   button.close data-dismiss="alert" type="button"
     span aria-hidden="true"  &times;
     span.sr-only Close
-  ul
-    - object.errors.full_messages.each do |msg|
-      li = msg
+  - object.errors.full_messages.each do |msg|
+    p = msg

@@ -1,0 +1,12 @@
+
+<% if @task.new_record? %>
+$('.field-add-task-<%= @task_list.id %>').effect('highlight', {color: 'red'});
+
+<% else %>
+$('ul#<%= @task_list.id %>.task-list').append("<%= escape_javascript(render 'users/task', task: @task) %>");
+$('.field-add-task-<%= @task_list.id %>').val("");
+$(".best_in_place").best_in_place();
+<% end %>
+
+
+

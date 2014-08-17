@@ -1,0 +1,8 @@
+<% unless @task_list.new_record? %>
+$('#NewProjectModal').modal('hide');
+$('.container-app').prepend("<%= escape_javascript(render 'users/task_list', list: @task_list) %>");
+$('.form-control.input-list').val("");
+$(".best_in_place").best_in_place();
+<% end %>
+
+

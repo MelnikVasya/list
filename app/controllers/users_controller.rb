@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :show, :destroy]
-  before_action :correct_user, only: [:edit, :update, :show, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :show, :destroy]
+  before_action :logged_in_user, only: [:welcome, :new, :create]
   def welcome
+      redirect_to current_user if signed_in?
   end
   def new
     @user = User.new
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:info] = "Welcome to the Todo lists!"
+      flash[:info] = 'Welcome to the Todo lists!'
       redirect_to @user
     else
       render 'new'
@@ -38,17 +40,16 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                   :password_confirmation)
     end
     def signed_in_user
       unless signed_in?
         store_location
-        flash[:warning] = 'Please sign in'
         redirect_to signin_url
       end
     end
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]) rescue nil
       redirect_to(root_url) unless current_user?(@user)
     end
 end

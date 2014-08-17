@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713185037) do
+ActiveRecord::Schema.define(version: 20140725131221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "task_lists", force: true do |t|
+    t.integer  "user_id"
+    t.string   "header"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "task_lists", ["user_id"], name: "index_task_lists_on_user_id", using: :btree
+
+  create_table "tasks", force: true do |t|
+    t.integer  "task_list_id"
+    t.string   "content"
+    t.boolean  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  add_index "tasks", ["task_list_id"], name: "index_tasks_on_task_list_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -25,7 +45,8 @@ ActiveRecord::Schema.define(version: 20140713185037) do
     t.string   "remember_token"
   end
 
-  add_index "users", ["name", "email"], name: "index_users_on_name_and_email", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
