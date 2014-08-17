@@ -1,0 +1,4 @@
+$(".container-app").on('ajax:success', '.todolist', function(){
+  $('div#<%= @task_list.id %>.todolist').fadeOut();
+});
+

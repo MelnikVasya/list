@@ -1,0 +1,5 @@
+$('input#<%= @task.id %>').parents('li.task').fadeOut(
+    function(){
+      $(this).remove();
+    });
+

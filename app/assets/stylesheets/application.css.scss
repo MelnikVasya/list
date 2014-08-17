@@ -1,3 +1,6 @@
+/*
+ *= require jquery-ui
+ */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrapValidator.min";
@@ -20,6 +23,7 @@ body {
 }
 @import "navbar";
 @import "users";
+@import "task_lists";
 @import "footer";
 
 

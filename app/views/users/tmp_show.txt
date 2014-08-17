@@ -1,0 +1,28 @@
+.todolist
+  .todolist-header
+    .sprite._r1_c1.vertical-alignment
+    h1.vertical-alignment For Home
+  form.add-task action="#" method="post"
+    .sprite._r1_c3
+    input placeholder=("Start typing here to create a task...") type="text"
+      input type="submit" value=("Add Task")
+  ul.task-list
+    li.task
+      input#c1 name="cc" type="checkbox"
+        label for="c1"
+        p Buy a milk
+    li.task
+      input#c2 name="cc" type="checkbox"
+        label for="c2"
+        p Call Mam
+    li.task
+      input#c3 name="cc" type="checkbox"
+        label for="c3"
+        p Clean the room
+    li.task
+      input#c4 name="cc" type="checkbox"
+        label for="c4"
+        p Repair the DVD Player
+a.add-todo-list href="#"
+  .sprite._r1_c2
+  | Add TODO List

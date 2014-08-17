@@ -1,0 +1,15 @@
+= content_tag(:li, class: 'task')
+  = check_box_tag task.id, task.id, task.mark, class: 'task-check'
+  label for=task.id
+  p
+    = best_in_place task, :content, type: :textarea, inner_class: 'inner-task', activator: "#edit_task_#{task.id}"
+  .edit-task-group
+    .up-down
+      = link_to priority_up_task_path(task), class: 'up-task'
+        = image_tag('up_task.png', class: 'up-img-task')
+      = link_to priority_down_task_path(task), class: 'down-task'
+        = image_tag('down_task.png', class: 'down-img-task')
+    = link_to '#', class: 'edit-task', id: "edit_task_#{task.id}"
+      = image_tag('edit_task.png')
+    = link_to task, method: :delete, class: 'delete-task', remote: true
+      = image_tag('delete_task.png')

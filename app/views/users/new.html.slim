@@ -1,17 +1,5 @@
 h1.logo Join Todo Lists
-= form_for(@user, html: {class: 'sign_up sign'}) do |f|
-  = render 'shared/error_messages', object: f.object if @user.errors.any?
-  .form-group
-    label Choose your username
-    = f.text_field :name, class: 'form-control', placeholder: 'Don\'t worry, you can change it later.'
-  .form-group
-    label Email address
-    = f.text_field :email, class: 'form-control', placeholder: 'What’s your email address?'
-  .form-group
-    label Create a password
-    = f.password_field :password, class: 'form-control', placeholder: 'Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)'
-  .form-group
-    label Confirm password
-    = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password'
+= form_for @user, html: {class: 'sign_up sign'} do |f|
+  = render 'fields', f: f
   .form-group
     = f.submit 'Create my account', class: 'btn btn-primary'

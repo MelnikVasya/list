@@ -1,0 +1,6 @@
+.todolist
+  .todolist-header
+    = image_tag('note.png', height: '24', width: '24', class: 'note-image')
+    = form_for(:task_list, url: task_list_path) do |f|
+      = f.text_field :header, class: 'form-control input-list'
+      = f.submit 'Add', class: 'btn btn-info'

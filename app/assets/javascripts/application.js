@@ -10,15 +10,57 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
+//= require turbolinks
 //= require jquery
-//= require jquery.turbolinks
+//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require bootstrapValidator.min
+//= require best_in_place
+//= require jquery.purr
+//= require best_in_place.purr
 //= require_tree .
-//= require turbolinks
 
 $(document).ready(function() {
+  /* Activating Best In Place */
+  $(".best_in_place").best_in_place();
+  $('.new-project-header').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      'task_list[header]': {
+        validators: {
+          notEmpty: {
+            message: 'Name cannot be empty'
+          },
+          stringLength: {
+            max: 140,
+            message: 'Maximum name projact length is 140 characters'
+          }
+        }
+      }
+    }
+  }).on('success.form.bv', function(e) {
+    // Called when the form is valid
+    var $form = $(e.target);
+    if ($form.data('remote') && $.rails !== undefined) {
+      e.preventDefault();
+    }
+  });
+
+  $('#NewProjectModal').on('hide.bs.modal', function() {
+    $('.new-project-header').bootstrapValidator('resetForm', true);
+  }).on('show.bs.modal', function(){
+    $('input.btn.btn-primary').prop('disabled', true);
+  });
+
   $('.sign_in').bootstrapValidator({
     message: 'This value is not valid',
     feedbackIcons: {
@@ -124,7 +166,23 @@ $(document).ready(function() {
     }
   });
 
-
+  $(".container-app").on('click', ".task-check", function(){
+      $.ajax({
+        url: '/tasks/'+this.value+'/toggle',
+        type: 'POST',
+        data: {"mark": this.checked}
+      });
+  });
+  $(".container-app").on("mouseover", ".task", function() {
+    $(this).children(".edit-task-group").css("display", "inline-block");
+  }).on("mouseout", ".task", function() {
+    $(this).children(".edit-task-group").css("display", "none");
+  });
+  $(".container-app").on("mouseover", ".todolist-header", function() {
+    $(this).children(".editing-list").css("display", "inline-block");
+  }).on("mouseout", ".todolist-header", function() {
+    $(this).children(".editing-list").css("display", "none");
+  });
 });
 
 
