@@ -1,14 +1,20 @@
-= content_tag(:li, class: 'task')
+= content_tag(:li, class: 'task', id: "task_li_id_#{task.id}")
   = check_box_tag task.id, task.id, task.mark, class: 'task-check'
   label for=task.id
   p
-    = best_in_place task, :content, type: :textarea, inner_class: 'inner-task', activator: "#edit_task_#{task.id}"
+    - @deadline = task.deadline
+    - if @deadline
+      = render 'users/deadline_label', task: task.id
+    = best_in_place task, :content, type: :textarea, ok_button: 'Save', ok_button_class: 'btn btn-primary btn-xs ok-button-task-edit', cancel_button: 'Cancel', cancel_button_class: 'btn btn-default btn-xs',  inner_class: 'inner-task', activator: "#edit_task_#{task.id}"
   .edit-task-group
-    .up-down
-      = link_to priority_up_task_path(task), class: 'up-task'
-        = image_tag('up_task.png', class: 'up-img-task')
-      = link_to priority_down_task_path(task), class: 'down-task'
-        = image_tag('down_task.png', class: 'down-img-task')
+    .dropdown
+      a#dropdownMenu1.dropdown-toggle.deadline-dropdown data-toggle="dropdown" href="#"
+        span.glyphicon.glyphicon-time.deadline-task-btn
+      = content_tag(:ul, id: "deadline_btn_#{task.id}", class: 'dropdown-menu', role: 'menu')
+        - if @deadline
+          = render 'users/deadline_edit_btn', task: task.id
+        - else
+          = render 'users/deadline_add_field', task: task.id
     = link_to '#', class: 'edit-task', id: "edit_task_#{task.id}"
       = image_tag('edit_task.png')
     = link_to task, method: :delete, class: 'delete-task', remote: true

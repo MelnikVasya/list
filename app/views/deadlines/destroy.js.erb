@@ -1,0 +1,5 @@
+$('span#label_deadline_id_<%= @deadline.id %>').remove();
+$('ul#deadline_btn_<%= @task_id %>').html("<%= escape_javascript(render 'users/deadline_add_field', task: @task_id) %>");
+$('ul#deadline_btn_<%= @task_id %>').parents('div.dropdown.open').removeClass('open');
+$('ul#deadline_btn_<%= @task_id %>').parents('div.edit-task-group').removeClass('show-edit-task-group-off show-edit-group');
+$('input#deadline_field_<%= @task_id %>').val('');

@@ -8,7 +8,7 @@ html
   body
     = render 'layouts/navbar'
     .container-app
-      = render 'layouts/flash'
+      .unobtrusive-flash-container
       = yield
     .footer
       a href="http://rubygarage.org/" target="_blank" &#64; Ruby Garage

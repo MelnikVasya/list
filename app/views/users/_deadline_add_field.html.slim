@@ -1,0 +1,5 @@
+li role="presentation"
+  = form_for(:deadline, url: deadlines_path, remote: true ) do |f|
+    = f.text_field :deadline_formatted, class: 'deadline form-control', id: "deadline_field_#{task}", readonly: 'readonly'
+    = f.hidden_field :task_id, value: task
+    = f.submit 'Add deadline', class: 'btn btn-default btn-xs add-deadline-btn input-sm'

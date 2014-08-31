@@ -4,38 +4,19 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to current_user }
-      else
-        format.html {
-          redirect_to current_user
-          @task.errors.full_messages.each do |msg|
-            flash[:warning] = msg
-          end
-        }
+    if @task.save
+      @date = Date.parse(params[:task][:deadline]) rescue nil
+      if @date
+        @task.create_deadline(deadline: @date)
       end
-      format.js
     end
   end
   def update
-    respond_to do |format|
-      if @task.update_attributes(task_params)
-        format.json { respond_with_bip(@task) }
-      else
-        format.json { respond_with_bip(@task) }
-      end
-    end
+    @task.update_attributes(task_params)
+    respond_with_bip(@task)
   end
-
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to current_user }
-      format.js
-    end
-
   end
 
   def toggle
@@ -43,19 +24,7 @@ class TasksController < ApplicationController
     render json: :ok
   end
 
-  def priority_up
-    @task.decrement_position
-    redirect_to current_user
-  end
-
-  def priority_down
-    @task.increment_position
-    redirect_to current_user
-  end
-
-
   private
-
     def task_owner
       @task = Task.find(params[:id])
       @task_list = @task.task_list
@@ -64,7 +33,6 @@ class TasksController < ApplicationController
         flash[:info] = 'Error'
       end
     end
-
     def list_owner
       @task_list = TaskList.find_by(id: params[:task][:task_list_id])
       unless @task_list.user_id == current_user.id
@@ -72,7 +40,6 @@ class TasksController < ApplicationController
         flash[:info] = 'Error'
       end
     end
-
     def task_params
       params.require(:task).permit(:task_list_id, :content)
     end

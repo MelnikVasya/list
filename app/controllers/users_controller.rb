@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @task_lists = @user.task_lists
   end
   def edit
   end

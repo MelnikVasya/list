@@ -17,6 +17,7 @@ gem 'acts_as_list'
 gem 'jquery-ui-rails'
 gem 'best_in_place', github: "bernat/best_in_place"
 gem 'uglifier'
+gem 'unobtrusive_flash', '>=3'
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'

@@ -1,0 +1,7 @@
+li role="presentation"
+  = link_to '#', id: "edit_deadline_btn_#{task}"
+    | Edit deadline
+li role="presentation"
+  = link_to "Delete deadline", deadline_path(:id=> @deadline.id, :task_id => task), :method=> :delete, :remote=> true
+
+

@@ -13,9 +13,10 @@
         = image_tag('delete_list.png', height: '16', width: '16')
   = form_for(:task, url: tasks_path, remote: true, html: {class: 'add-task' }) do |f|
     = image_tag('plus_green.png', height: '24', width: '24', class: 'plus-green')
-    = f.text_field :content, placeholder: 'Start typing here to create a task...', class: "field-add-task-#{list.id}"
+    = f.text_field :deadline, id: "date_id_#{list.id}", class: 'content-task deadline-create-task', placeholder: 'Deadline', readonly: 'readonly'
+    = f.text_field :content, id: "content_id_#{list.id}", placeholder: 'Start typing here to create a task...', class: " content-task field-add-task-#{list.id}"
     = f.hidden_field :task_list_id, value: list.id
     = f.submit 'Add Task'
-  = content_tag(:ul, class: 'task-list', id: list.id)
+  = content_tag(:ul, class: 'task-list', id: "task_ul_id_#{list.id}")
     - list.tasks.each do |task|
       = render 'task', task: task

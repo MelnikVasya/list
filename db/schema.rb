@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725131221) do
+ActiveRecord::Schema.define(version: 20140821195635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deadlines", force: true do |t|
+    t.integer "task_id"
+    t.date    "deadline"
+  end
+
+  add_index "deadlines", ["task_id"], name: "index_deadlines_on_task_id", using: :btree
 
   create_table "task_lists", force: true do |t|
     t.integer  "user_id"

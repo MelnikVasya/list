@@ -45,11 +45,11 @@
   font-size: 18px;
   color: #fff;
   text-shadow:0 1px 0 #28405D;
-  width: 535px;
+  width: 595px;
   margin: 13px 0;
 }
 .inner-list-header {
-  width: 535px;
+  width: 595px;
   border: none;
   border-bottom: 1px solid #28405D;
   outline: none;
@@ -106,20 +106,26 @@ li.task p {
 
 .task p {
   display: inline-block;
-  padding: 16px 23px 17px;
+  padding: 15px 15px 17px;
   background: image_url('left-border-task.png') top left repeat-y;
   border-right: 1px solid #E7EBEA;
-  width: 542px;
+  width: 600px;
   text-align: justify;
   margin-left: 39px;
+  cursor: move;
 }
 
 .inner-task {
-  width: 500px;
+  width: 569px;
   height: 20px;
   outline: none;
   border: 1px solid #E7EBEA;
   resize: none;
+  background: none;
+}
+
+.ok-button-task-edit {
+  margin-right: 5px;
 }
 
 input[type="checkbox"] {
@@ -160,8 +166,8 @@ ul.task-list {
   margin-right: 10px;
 }
 
-.add-task input[type="text"] {
-  width: 535px;
+.content-task {
+  width: 510px;
   height: 30px;
   padding: 0 0 0 13px;
   font-size: 14px;
@@ -171,7 +177,29 @@ ul.task-list {
   border: 0;
   outline: none;
 }
-
+.deadline-create-task {
+  width: 85px;
+  padding-left: 3px;
+  cursor: pointer;
+  border-right: 0;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.75);
+}
+span.label.label-primary {
+  display: inline-block;
+  width: 77px;
+  margin: 0 5px 2px 0;
+  cursor: pointer;
+}
+.label.label-primary .glyphicon.glyphicon-time {
+  margin-right: 2px;
+}
+.inner-deadline-edit {
+  background: none;
+  outline: none;
+  width: 85px;
+  height: 11px;
+  border: 0;
+}
 .add-task input[type="submit"] {
   margin: 0;
   width: 108px;
@@ -194,25 +222,27 @@ ul.task-list {
   right: 12px;
   margin-top: -24px;
 }
-.up-down {
-  display: inline-block;
-  vertical-align: middle;
-}
-.up-img-task {
-  border-bottom: 1px solid #999;
-  padding: 0 2px 6px;
-}
-.down-img-task {
-  padding: 0 2px;
-}
-.up-task {
-  display: block;
-  padding: 9px 10px 0;
+.deadline-dropdown {
+  padding: 15px 10px;
 
 }
-.down-task {
-  display: block;
-  padding: 0 10px 8px;
+.show-edit-group {
+  display: inline-block;
+}
+.show-edit-task-group-off {
+  display: inline-block;
+}
+.dropdown {
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 12px 0;
+}
+
+.deadline-task-btn {
+  color: #999;
+}
+.deadline-task-btn:hover {
+  color: #999;
 }
 .edit-task {
   display: inline-block;
@@ -254,6 +284,38 @@ a.big-button img {
   @extend .alert-danger;
 }
 
+.dropdown-menu {
+  padding: 5px 5px;
+  width: 110px;
+  min-width: 110px;
+  font-size: 12px;
+}
+
+.dropdown-menu > li > a {
+  padding: 3px 5px;
+}
+
+.ui-datepicker-current, .ui-datepicker-next, .ui-datepicker-prev {
+  display: none;
+}
 
 
+.deadline.form-control {
+  width: 98px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  height: 25px;
+  font-size: 12px;
+}
+.add-deadline-btn {
+  width: 98px;
+  text-align: center;
+  height: 25px;
+}
 
+.deadline.form-control[readonly] {
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 1;
+}

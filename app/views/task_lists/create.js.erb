@@ -3,6 +3,12 @@ $('#NewProjectModal').modal('hide');
 $('.container-app').prepend("<%= escape_javascript(render 'users/task_list', list: @task_list) %>");
 $('.form-control.input-list').val("");
 $(".best_in_place").best_in_place();
+$('.task-list').sortable({
+  axis: 'y',
+  update: function(){
+    $.post('/task_lists/sort', $(this).sortable('serialize'));
+  }
+});
 <% end %>
 
 

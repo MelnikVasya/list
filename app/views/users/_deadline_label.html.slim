@@ -1,0 +1,3 @@
+= content_tag(:span, class: 'label label-primary', id: "label_deadline_id_#{@deadline.id}")
+  span.glyphicon.glyphicon-time
+  = best_in_place @deadline, :deadline_formatted, inner_class: 'inner-deadline-edit', activator: "#edit_deadline_btn_#{task}"

@@ -171,6 +171,8 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unobtrusive_flash (3.1.0)
+      railties
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -200,3 +202,4 @@ DEPENDENCIES
   sprockets (= 2.11.0)
   turbolinks (= 2.2.2)
   uglifier
+  unobtrusive_flash (>= 3)

@@ -1,5 +1,5 @@
 class TaskListsController < ApplicationController
-  before_action :current_task_list, except: [:new, :create]
+  before_action :current_task_list, except: [:new, :create, :sort]
   respond_to :html, :json
 
   def new
@@ -45,6 +45,13 @@ class TaskListsController < ApplicationController
       format.js
     end
 
+  end
+
+  def sort
+    params[:task_li_id].each_with_index do |id, index|
+      Task.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   private

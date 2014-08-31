@@ -1,17 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-
-
 //= require turbolinks
 //= require jquery
 //= require jquery-ui
@@ -22,9 +8,13 @@
 //= require best_in_place
 //= require jquery.purr
 //= require best_in_place.purr
+//= require jquery.datetimepicker
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require_tree .
 
 $(document).ready(function() {
+  UnobtrusiveFlash.flashOptions['timeout'] = 6000; // milliseconds
   /* Activating Best In Place */
   $(".best_in_place").best_in_place();
   $('.new-project-header').bootstrapValidator({
@@ -47,7 +37,7 @@ $(document).ready(function() {
         }
       }
     }
-  }).on('success.form.bv', function(e) {
+  }).on('success.form.bv', function (e) {
     // Called when the form is valid
     var $form = $(e.target);
     if ($form.data('remote') && $.rails !== undefined) {
@@ -55,9 +45,9 @@ $(document).ready(function() {
     }
   });
 
-  $('#NewProjectModal').on('hide.bs.modal', function() {
+  $('#NewProjectModal').on('hide.bs.modal', function () {
     $('.new-project-header').bootstrapValidator('resetForm', true);
-  }).on('show.bs.modal', function(){
+  }).on('show.bs.modal', function () {
     $('input.btn.btn-primary').prop('disabled', true);
   });
 
@@ -166,23 +156,46 @@ $(document).ready(function() {
     }
   });
 
-  $(".container-app").on('click', ".task-check", function(){
-      $.ajax({
-        url: '/tasks/'+this.value+'/toggle',
-        type: 'POST',
-        data: {"mark": this.checked}
-      });
+  $(".container-app").on('click', ".task-check", function () {
+    $.ajax({
+      url: '/tasks/' + this.value + '/toggle',
+      type: 'POST',
+      data: {"mark": this.checked}
+    });
   });
-  $(".container-app").on("mouseover", ".task", function() {
-    $(this).children(".edit-task-group").css("display", "inline-block");
-  }).on("mouseout", ".task", function() {
-    $(this).children(".edit-task-group").css("display", "none");
+  $(".container-app").on("mouseover", ".task", function () {
+    $(this).children(".edit-task-group").addClass("show-edit-group");
+  }).on("mouseout", ".task", function () {
+    $(this).children(".edit-task-group").removeClass("show-edit-group");
+  }).on("mouseover", ".todolist-header", function () {
+    $(this).children(".editing-list").addClass("show-edit-group");
+  }).on("mouseout", ".todolist-header", function () {
+    $(this).children(".editing-list").removeClass("show-edit-group");
+  }).on('shown.bs.dropdown', '.dropdown', function () {
+    $(this).parent(".edit-task-group").addClass("show-edit-task-group-off");
+  }).on('hide.bs.dropdown', '.dropdown', function () {
+    $(this).parent(".edit-task-group").removeClass("show-edit-task-group-off");
+  }).on("mouseover", ".deadline-create-task, .deadline", function () {
+    $(this).datepicker({
+      dateFormat: "yy/mm/dd",
+      changeMonth: true,
+      changeYear: true,
+      showButtonPanel: true,
+      closeText: 'Clear',
+      onClose: function (dateText, inst) {
+        if ($(window.event.srcElement).hasClass('ui-datepicker-close'))
+          $(this).val('');
+      }
+    });
   });
-  $(".container-app").on("mouseover", ".todolist-header", function() {
-    $(this).children(".editing-list").css("display", "inline-block");
-  }).on("mouseout", ".todolist-header", function() {
-    $(this).children(".editing-list").css("display", "none");
+  $('.task-list').sortable({
+    axis: 'y',
+    handle: 'p',
+    update: function () {
+      $.post('/task_lists/sort', $(this).sortable('serialize'));
+    }
   });
+
 });
 
 
