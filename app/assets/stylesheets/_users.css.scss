@@ -232,7 +232,7 @@ span.label.label-primary {
 .show-edit-task-group-off {
   display: inline-block;
 }
-.dropdown {
+.edit-task-group .dropdown {
   display: inline-block;
   vertical-align: bottom;
   margin: 12px 0;
@@ -284,14 +284,14 @@ a.big-button img {
   @extend .alert-danger;
 }
 
-.dropdown-menu {
+.edit-task-group .dropdown-menu {
   padding: 5px 5px;
   width: 110px;
   min-width: 110px;
   font-size: 12px;
 }
 
-.dropdown-menu > li > a {
+.edit-task-group .dropdown-menu > li > a {
   padding: 3px 5px;
 }
 
