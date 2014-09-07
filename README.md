@@ -20,7 +20,7 @@ Write the queries for:
 
 4.get the tasks for all projects having the name beginning with “N” letter
 
-`SELECT DISTINCT status FROM tasks ORDER BY status ASC`
+`SELECT * FROM tasks WHERE name LIKE 'N%'`
 
 5.get the list of all projects containing the ‘a’ letter in the middle of the name, and show the
 tasks count near each project. Mention that there can exist projects without tasks and
