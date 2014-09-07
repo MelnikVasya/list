@@ -38,5 +38,5 @@ tasks with project_id=NULL
 
 8.get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
 
-``
+`SELECT name FROM (SELECT projects.name, count(*)tasks FROM projects, tasks WHERE tasks.status = 'completed' AND  projects.projects_id = tasks.project_id GROUP BY projects.name) as count WHERE tasks > 10`
 
