@@ -16,7 +16,7 @@ Write the queries for:
 
 3.get the count of all tasks in each project, order by projects names
 
-`SELECT projects.name, COUNT(*)tasks FROM projects, tasks WHERE projects.projects_id = tasks.project_id GROUP BY projects.name ORDER BY projects.name`
+`SELECT projects.name, COUNT(tasks.*)tasks FROM projects, tasks WHERE projects.projects_id = tasks.project_id GROUP BY projects.name ORDER BY projects.name`
 
 4.get the tasks for all projects having the name beginning with “N” letter
 
@@ -26,7 +26,7 @@ Write the queries for:
 tasks count near each project. Mention that there can exist projects without tasks and
 tasks with project_id=NULL
 
-``
+`SELECT projects.name, COUNT(tasks.tasks_id) FROM projects, tasks WHERE projects.name LIKE '%a%' AND projects.projects_id = tasks.project_id GROUP BY projects.name`
 
 6.get the list of tasks with duplicate names. Order alphabetically
 
@@ -38,5 +38,5 @@ tasks with project_id=NULL
 
 8.get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
 
-`SELECT name FROM (SELECT projects.name, count(*)tasks FROM projects, tasks WHERE tasks.status = 'completed' AND  projects.projects_id = tasks.project_id GROUP BY projects.name) as count WHERE tasks > 10`
+`SELECT name FROM (SELECT projects.name, count(tasks.*) FROM projects, tasks WHERE tasks.status = 'completed' AND  projects.projects_id = tasks.project_id GROUP BY projects.name) as count WHERE tasks > 10`
 
