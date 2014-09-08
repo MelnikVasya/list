@@ -34,7 +34,7 @@ tasks with project_id=NULL
 
 7.get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
 
-``
+`SELECT tasks.* FROM tasks, projects WHERE projects.name = "Garage" AND projects.projects_id = tasks.project_id GROUP BY tasks.name HAVING COUNT(tasks.name) > 1 AND COUNT(tasks.status) > 1 ORDER BY COUNT(tasks.name) AND COUNT(tasks.status)`
 
 8.get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
 
